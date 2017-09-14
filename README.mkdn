@@ -3,7 +3,7 @@
 ### Abstract
 After disclosing a new Bluetooth-based attack vector, Armis published an Android app that can be used to check if a device is at risk or if the devices around it are at risk. To test this, the [BlueBorne Vulnerability Scanner](https://play.google.com/store/apps/details?id=com.armis.blueborne_detector) was downloaded from Google Play Store and installed on a device emulator.
 
-Inspecting and reverse engineering this app shows the local device risk check simply compares the device security patch date to a hardcoded date around the time of disclosure, and the remote (nearby) devices risk check and rating is a shallow consideration of device manufacturer and type. Checks like these are device-specific and naive, and should not be considered a sufficient assessment.
+Reverse engineering this app shows the local device risk check simply compares the device security patch date to a hardcoded date around the time of disclosure, and the remote (nearby) devices risk check and rating is a shallow consideration of device manufacturer and type.
 
 ### Introduction
 Refer to Armis [resources](https://www.armis.com/blueborne/).
@@ -61,7 +61,7 @@ Since no permissions are declared in the Manifest, no permissions are requested 
  * `android.bluetooth.adapter.action.REQUEST_ENABLE`
  * `android.permission.ACCESS_COARSE_LOCATION`
 
-Android API version is pulled to check device capabilities: `Build.VERSION.SDK_INT >= 18`
+Android API version is pulled to check device capabilities, e.g.: `Build.VERSION.SDK_INT >= 18`
 
 System prop `ro.product.model` is pulled to display the local device name.
 
@@ -95,7 +95,7 @@ Local device:
 System prop `Build.VERSION.SECURITY_PATCH` or `ro.build.version.security_patch` is pulled then compared to `GregorianCalendar(2017, 8, 1).getTime()`. Local device with a security patch date older than this is considered vulnerable.
 
 Remote devices:  
-Scan is started and remote device attrs are pulled as they are discovered. Remote device address prefix is mapped to a manufacturer name from a static list; e.g., "Apple", "HTC" or "Samsung". Remote device is then classified based on manufacturer name; e.g., "ios", "android" or "tizen". Risk is then rated based on remote device classification:
+Device scan is started and remote device attrs are pulled as they are discovered. Remote device address prefix is mapped to a manufacturer name from a static list; e.g., "Apple", "HTC" or "Samsung". Remote device is then classified based on manufacturer name; e.g., "ios", "android" or "tizen". Risk is then rated based on remote device classification:
 
 Classification|Rating|Label
 ---|---|---
@@ -111,8 +111,8 @@ Classification|Rating|Label
 Remote device with null or unknown manufacturer is considered low risk. Low Energy device `DEVICE_TYPE_LE` is also considered low risk.
 
 ### Discussion
-Assuming a normal progression though the app activities, you first check if your device is at risk; it most likely is, since you are checking using an Android app, which _likely_ means you are using an Android device; you are then notified your device is vulnerable and prompted to check devices around you; importantly, Bluetooth is then enabled (given that runtime permissions were granted), thereby opening your vulnerable device to the attack vector. This brief proximity awareness comes at the cost of making your device __more__ vulnerable than it was before downloading and installing the app.
+Assuming a normal progression though the app, you first check if your device is at risk; it most likely is, since you are checking using an Android app, which likely means you are using an Android device; you are then notified if your device is vulnerable and prompted to check devices around you; importantly, Bluetooth is then enabled (given that runtime permissions are granted), thereby opening your potentially vulnerable device to the attack vector. This brief proximity awareness comes at the cost of making your device __more__ vulnerable than it was before downloading and installing the app.
 
-Overall, the app is _somewhat_ useful, in the sense that having a machine do something for you is useful; in this case, comparing two dates. Truly this is useful if and only if you do not know where to find one of the dates. Given both dates, it takes less time to compare them yourself than it does to download, install and run the app.
+Overall, the app is somewhat useful, in the sense that having a machine do something for you is useful; in this case, comparing two dates. Truly this is useful if and only if you do not know where to find one of the dates. Given both dates, it takes less time to compare them yourself than it does to download, install and run the app.
 
 Its other function--to "scan and locate" nearby devices to check if they too are at risk--is really a conventional Bluetooth device discovery scan that pulls publicly available device attrs for each device discovered, including device manufacturer and type, which are then used to score the device risk on an interval from 1 to 3 based on an array of static values; e.g., a device manufactured by "Google" is always an "android" device which always has a score of 3 (high risk). This also seems relatively useless since it is already plausible to say, "Android devices are at high risk," or, "iOS devices are at risk, but lower." Armis Labs clearly already has.
