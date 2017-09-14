@@ -21,39 +21,39 @@ Refer to Armis [resources](https://www.armis.com/blueborne/).
 
 2. Start com.armis.blueborne_detector.SplashActivity. Select __Tap to Check__:
 
-    <img src="/images/Screenshot_20170913-044525.png" alt="SplashActivity" width="250"/>
-    <img src="/images/Screenshot_20170913-044553.png" alt="deviceScan" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044525.png" alt="SplashActivity" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044553.png" alt="deviceScan" width="250"/>
     
 4. Wait for result:
 
-    <img src="/images/Screenshot_20170913-044609.png" alt="isVulnerable" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044609.png" alt="isVulnerable" width="250"/>
 
    Select __Check Devices Around Me__.
     
 5. Coarse location permission is requested. Denying the request stops device scan:
 
-    <img src="/images/Screenshot_20170913-044703.png" alt="locationPermission" width="250"/>
-    <img src="/images/Screenshot_20170913-044726.png" alt="allowPermissions" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044703.png" alt="locationPermission" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044726.png" alt="allowPermissions" width="250"/>
     
     __Try Again__ and allow coarse location.
     
 5. Bluetooth permission is requested. Denying the request stops device scan:
     
-    <img src="/images/Screenshot_20170913-044738.png" alt="bluetoothPermission" width="250"/>
-    <img src="/images/Screenshot_20170913-044726.png" alt="allowPermissions" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044738.png" alt="bluetoothPermission" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044726.png" alt="allowPermissions" width="250"/>
     
      __Try Again__ and allow Bluetooth to be enabled.
     
 6. Wait for result:
 
-    <img src="/images/Screenshot_20170913-044830.png" alt="nearbyScan" width="250"/>
-    <img src="/images/Screenshot_20170913-045157.png" alt="riskResult" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-044830.png" alt="nearbyScan" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-045157.png" alt="riskResult" width="250"/>
     
 7. Inspect:
 
-    <img src="/images/Screenshot_20170913-081520.png" alt="lowRisk2" width="250"/>
-    <img src="/images/Screenshot_20170913-081513.png" alt="mediumRisk" width="250"/>
-    <img src="/images/Screenshot_20170913-081458.png" alt="highRisk" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-081520.png" alt="lowRisk2" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-081513.png" alt="mediumRisk" width="250"/>
+    <img src="/screenshots/Screenshot_20170913-081458.png" alt="highRisk" width="250"/>
 
 
 ### Results
