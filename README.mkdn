@@ -108,10 +108,10 @@ Classification|Rating|Label
 "pc"|2|Medium
 "smartphone"|2|Medium
 
-Remote device with null or uknown manufacturer is considered low risk. Low Energy device `DEVICE_TYPE_LE` is also considered low risk.
+Remote device with null or unknown manufacturer is considered low risk. Low Energy device `DEVICE_TYPE_LE` is also considered low risk.
 
 ### Discussion
-Assuming a normal progression though the app activities, you first check if your device is at risk; it mostly likely is, since you are checking using an Android app, which _likely_ means you are using a Android device; you are then notified your device is vulnerable and prompted to check devices around you; importantly, Bluetooth is then enabled (given that runtime permissions were granted), thereby opening your vulnerable device to the attack vector. This brief proximity awareness comes at the cost of making your device __more__ vulnerable than it was before downloading and installing the app.
+Assuming a normal progression though the app activities, you first check if your device is at risk; it most likely is, since you are checking using an Android app, which _likely_ means you are using an Android device; you are then notified your device is vulnerable and prompted to check devices around you; importantly, Bluetooth is then enabled (given that runtime permissions were granted), thereby opening your vulnerable device to the attack vector. This brief proximity awareness comes at the cost of making your device __more__ vulnerable than it was before downloading and installing the app.
 
 Overall, the app is _somewhat_ useful, in the sense that having a machine do something for you is useful; in this case, comparing two dates. Truly this is useful if and only if you do not know where to find one of the dates. Given both dates, it takes less time to compare them yourself than it does to download, install and run the app.
 
